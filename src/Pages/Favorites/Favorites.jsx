@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PhoneCard from '../../components/PhoneCard/PhoneCard';
 import { getFavorites, removeFavorite } from '../../Utils';
+import EmptyState from '../../components/Ui/EmptyState';
 const Favorites = () => {
 
     
@@ -18,6 +19,8 @@ const handleDelete =(id)=>{
 removeFavorite(id)
 setDisplayPhones(getFavorites())
 }
+
+if(displayPhones.length <1) return <EmptyState></EmptyState>
 
     return (
         <div>
