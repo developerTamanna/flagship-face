@@ -36,6 +36,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
        {
         path: "/phone-details/:id",
         Component: PhoneDetails,
+        hydrateFallbackElement: <p>Loading</p>,
         loader: ()=> fetch('../phones.json')
        },
     ],

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import { IoBookmarksSharp } from "react-icons/io5";
+import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 
 import Button from '../../components/Ui/Button';
+import { addFavorite } from '../../Utils';
 
 const PhoneDetails = () => {
     const data = useLoaderData();
@@ -11,6 +13,13 @@ const PhoneDetails = () => {
     const singlePhone = data.find(phone => phone.id === parseInt(id));
 
     const { brand, camera_info, description, image, model, name, price, storage } = singlePhone || {};
+
+
+    //localstorage
+
+    const handleFavorite =()=>{
+        addFavorite(singlePhone)
+    }
 
     return (
 <div className="py-12 px-4 max-w-4xl mx-auto">
@@ -21,8 +30,8 @@ const PhoneDetails = () => {
 
 {/* Action Buttons */}
 <div className="flex justify-end gap-4 mb-8">
-    <Button label='cart'></Button>
-    <Button label={<IoBookmarksSharp />}></Button>
+    <Button label={<MdOutlineShoppingCartCheckout />}></Button>
+    <Button onClick={handleFavorite} label={<IoBookmarksSharp />}></Button>
 </div>
 
 {/* Details Title */}
