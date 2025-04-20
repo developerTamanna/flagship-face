@@ -1,4 +1,5 @@
 
+import toast, { Toaster } from 'react-hot-toast';
 
 export const getFavorites =()=>{
     const favorites = localStorage.getItem('favorites')
@@ -18,6 +19,8 @@ export const addFavorite = phone=>{
     const isExist = favorites.find(p=>p.id===phone.id)
     if(isExist) return console.log('adede')
     favorites.push(phone)
+
+    toast.success('phone added success')
     // console.log(favorites)
     localStorage.setItem('favorites', JSON.stringify(favorites))
 }
@@ -51,6 +54,7 @@ export const addToCart = phone=>{
     const isExist = cart.find(p=>p.id===phone.id)
     if(isExist) return console.log('adede')
     cart.push(phone)
+    toast.success('phone added success')
     // console.log(favorites)
     localStorage.setItem('cart', JSON.stringify(cart))
 }
