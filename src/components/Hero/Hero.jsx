@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import bannerImg from '../../assets/banner (1).png'
-const Hero = () => {
+const Hero = ({handleSearch}) => {
+
+  const [searchText, setSearchText] = useState('');
+
+  console.log(searchText)
     return (
         <div>
            <div className='py-12'>
@@ -11,8 +15,17 @@ const Hero = () => {
                <p className='text-gray-500'>
                 Best Place To Browse, Search, View details and purchase of top flagship phones <br></br> of the current time-flagshipFaceOff
                </p>
-<form className="flex flex-col md:flex-row justify-center items-center mb-4 md:px-24 gap-4">
+<form
+onSubmit={(e)=>{
+  handleSearch(e,searchText)
+  setSearchText('')
+}
+  
+}
+className="flex flex-col md:flex-row justify-center items-center mb-4 md:px-24 gap-4">
   <input 
+   value={searchText}
+   onChange={e=>setSearchText(e.target.value)}
     type="text" 
     placeholder="Search phone by name" 
     className="w-full md:w-1/3 px-4 py-2 border border-gray-300 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"

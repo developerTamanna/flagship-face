@@ -18,6 +18,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
         {
          path: "/", 
          Component: Home,
+         hydrateFallbackElement: <p>Loading</p>,
          loader: ()=> fetch('phones.json')
         },
         {
