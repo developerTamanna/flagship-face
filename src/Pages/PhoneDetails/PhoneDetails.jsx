@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import { IoBookmarksSharp } from "react-icons/io5";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 
 import Button from '../../components/Ui/Button';
-import { addFavorite } from '../../Utils';
+import { addFavorite, addToCart, getCart } from '../../Utils';
+import { CartContext } from '../../Providers/Context';
 
 const PhoneDetails = () => {
+
+    const {setCart} = useContext(CartContext)
+
     const data = useLoaderData();
     const { id } = useParams();
 
@@ -20,6 +24,12 @@ const PhoneDetails = () => {
     const handleFavorite =()=>{
         addFavorite(singlePhone)
     }
+    const handleCart =()=>{
+        addToCart(singlePhone)
+        //neje bosaice setcart ta
+        // setCart(prev => [...prev, singlePhone]);
+        setCart(getCart())
+    }
 
     return (
 <div className="py-12 px-4 max-w-4xl mx-auto">
@@ -30,7 +40,9 @@ const PhoneDetails = () => {
 
 {/* Action Buttons */}
 <div className="flex justify-end gap-4 mb-8">
-    <Button label={<MdOutlineShoppingCartCheckout />}></Button>
+    <Button
+    onClick={handleCart}
+    label={<MdOutlineShoppingCartCheckout />}></Button>
     <Button onClick={handleFavorite} label={<IoBookmarksSharp />}></Button>
 </div>
 

@@ -10,12 +10,15 @@ import './index.css'
 
 
 import { router } from './Routes/Routes.jsx';
+import CartProvider from './Providers/CartProvider.jsx';
 
 
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+      <CartProvider>
       <RouterProvider router={router} />
+      </CartProvider>
   </StrictMode>,
 )
