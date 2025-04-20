@@ -18,6 +18,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
         {
          path: "/", 
          Component: Home,
+         loader: ()=> fetch('phones.json')
         },
         {
         path: "/favorites",
