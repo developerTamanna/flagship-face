@@ -19,7 +19,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
          path: "/", 
          Component: Home,
          hydrateFallbackElement: <p>Loading</p>,
-         loader: ()=> fetch('phones.json')
+         loader: ()=> fetch('../phones.json')
         },
         {
         path: "/favorites",
@@ -34,8 +34,9 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
        },
     
        {
-        path: "/phone-details",
+        path: "/phone-details/:id",
         Component: PhoneDetails,
+        loader: ()=> fetch('../phones.json')
        },
     ],
     },
