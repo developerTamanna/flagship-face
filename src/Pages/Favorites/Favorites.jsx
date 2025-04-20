@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PhoneCard from '../../components/PhoneCard/PhoneCard';
-import { getFavorites } from '../../Utils';
+import { getFavorites, removeFavorite } from '../../Utils';
 const Favorites = () => {
 
     
@@ -11,6 +11,14 @@ const Favorites = () => {
           const savePhones = getFavorites()
           setDisplayPhones(savePhones)
         },[])
+
+//delete function
+
+const handleDelete =(id)=>{
+removeFavorite(id)
+setDisplayPhones(getFavorites())
+}
+
     return (
         <div>
             <div className='py-12'>
@@ -29,6 +37,8 @@ const Favorites = () => {
             displayPhones.map(phone=><PhoneCard
             key={phone.id}
             phone={phone}
+            deletable={true}
+            handleDelete={handleDelete}
             ></PhoneCard>)
         }
             
